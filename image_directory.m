@@ -190,7 +190,7 @@ global image_data
 f = image_list(block.Dwork(1).Data);
 img = imread(fullfile(data_folder + '/images/', f.name));
 block.OutputPort(1).CurrentDimensions = size(img);
-block.OutputPort(1).Data = img;
+block.OutputPort(1).Data = permute(img, [2, 1, 3]);
 
 image_name = extractBetween(f.name, 1, length(f.name) - 4);
 [~,index] = ismember(image_name, image_data{:,1});
